@@ -1,8 +1,12 @@
 from flask import Flask, request, render_template
 import json
 from pymongo import MongoClient
+import os
 
-client = MongoClient("mongodb://127.0.0.1:27017")
+MONGO_URI = os.getenv('MONGO_URI')
+print(MONGO_URI)
+# client = MongoClient("mongodb://"+MONGO_URI+":27017")
+client = MongoClient("mongodb://"+MONGO_URI+":27017/app")
 print("Connection Successful")
 
 
@@ -67,3 +71,6 @@ def get_work_times():
         count_hours=count_hours+int(x["count_hours"])
     print (count_hours)
     return ("your sum hours is :"+str(count_hours))
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=3000)
