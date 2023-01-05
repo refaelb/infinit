@@ -2,12 +2,16 @@ from flask import Flask, request, render_template
 import json
 from pymongo import MongoClient
 import os
+from dotenv import load_dotenv
 
-MONGO_URI = os.getenv('MONGO_URI')
+load_dotenv('.env') 
+# MONGO_URI = os.getenv('MONGO_URI')
+MONGO_URI = os.environ.get('MONGO_URI')
 print(MONGO_URI)
-# client = MongoClient("mongodb://"+MONGO_URI+":27017")
-client = MongoClient("mongodb://"+MONGO_URI+":27017/app")
-print("Connection Successful")
+client = MongoClient(MONGO_URI)
+# client = MongoClient("mongodb://"+MONGO_URI+":27017/app")
+
+print("Connection Successful to mongo")
 
 
 app = Flask(__name__)
@@ -71,6 +75,20 @@ def get_work_times():
         count_hours=count_hours+int(x["count_hours"])
     print (count_hours)
     return ("your sum hours is :"+str(count_hours))
+
+@app.route('/getAll' , methods=['GET','POST'])
+def get_all():
+    mydb = client["app"]
+    json_data=json.loads(request.data)
+    mycol=mydb[json_data["user"]]
+    mydoc = mycol.find().sort(json_data["user"])
+    count_hours=[]
+    for x in mydoc:
+        count_hours.append(x)
+        # count_hours=count_hours+int(x["count_hours"])
+    print (count_hours)
+    return ("your sum hours is :"+str(count_hours))
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=3000)
