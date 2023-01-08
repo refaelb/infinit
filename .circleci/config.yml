@@ -8,7 +8,7 @@ jobs:
     machine: true
     step:
       name: Check out the repo
-      uses: actions/checkout@v3
+      run: actions/checkout@v3
     step:
       name: Run a one-line script
       run: echo Hello, world!
