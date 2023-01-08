@@ -5,8 +5,8 @@ on:
     branches: [ "test" ]
 jobs:
   build:
-    docker:
-      - image: cimg/base:2022.09
+    # docker:
+    #   - image: cimg/base:2022.09
     step:
       - name: Check out the repo
         uses: actions/checkout@v3
