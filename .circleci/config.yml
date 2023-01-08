@@ -43,9 +43,13 @@ jobs:
   build:
     # macos:
     #   xcode: 13.4.1
-    machine:
-    image: ubuntu-2204:2022.04.2
+    docker:
+        - image: cimg/go:1.17
     steps:
+      - setup_remote_docker:
+          version: 20.10.14
+          docker_layer_caching: true
+
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
       - run: ls -a
