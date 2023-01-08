@@ -5,7 +5,7 @@ on:
     branches: [ "test" ]
 jobs:
   build:
-    machine: true
+    machine: "true"
     step:
       name: Check out the repo
       run: actions/checkout@v3
