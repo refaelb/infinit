@@ -13,8 +13,7 @@ jobs:
      
 
 
-  build:
-    machine: "true"
+
     step:
       name: Check out the repo
       run: echo "hi "
