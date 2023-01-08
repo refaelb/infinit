@@ -54,7 +54,7 @@ jobs:
       - run: |
           `export PATH=.cirecleci/ci-env:"$PATH" >> "$BASH_ENV"` 
           echo 'source "$BASH_ENV"'
-      - run: env $(cat .env | xargs) rails
+      - run: env $(cat ./cirecleci/ci-env | xargs) rails
       - run: echo $IMAGE_NAME
       - run: echo "hello world" # run the `echo` command
       - run: ls -a
