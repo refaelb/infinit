@@ -59,5 +59,5 @@ jobs:
       - run: echo "hello world" # run the `echo` command
       - run: ls -a
       # - run: git checkout test
-      - run: docker build -t ${IMAGE_NAME}:v5.0 dev/back/
+      - run: docker build -t ${{ IMAGE_NAME }}:v5.0 dev/back/
       - run: docker push  
