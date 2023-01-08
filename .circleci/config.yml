@@ -5,7 +5,9 @@ on:
     branches: [ "test" ]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    macos:
+      xcode: "9.0" # uses Xcode version
+    resource_class: large
     step:
       - name: Check out the repo
         uses: actions/checkout@v3
