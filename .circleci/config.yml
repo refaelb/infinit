@@ -45,12 +45,18 @@ jobs:
     #   xcode: 13.4.1
     docker:
         - image: cimg/go:1.17
-    steps:
-      - setup_remote_docker:
-          version: 20.10.14
-          docker_layer_caching: true
+    # steps:
+    #   - setup_remote_docker:
+    #       version: 20.10.14
+    #       docker_layer_caching: true
 
       - checkout # check out the code in the project directory
-      - run: export HI=hi
-      - run: echo $HI
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: my-docker-hub-namespace/my-docker-hub-repository
+      
+      # - run: export HI=hi
+      # - run: echo $HI
       # - run: set -a && . ./ci-env && set +a && echo $IMAGE_NAME && docker build -t $IMAGE_NAME:$TAG dev/back/ && docker push  $IMAGE_NAME:$TAG 
