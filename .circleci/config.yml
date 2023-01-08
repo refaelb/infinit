@@ -47,3 +47,4 @@ jobs:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
       - run: ls -a
+      - run: docker build -t infi:v5.0 /dev/back/
