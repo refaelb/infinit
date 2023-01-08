@@ -12,7 +12,7 @@ jobs:
 
      
 
-jobs:
+
   build:
     machine: "true"
     step:
