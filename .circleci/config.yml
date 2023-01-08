@@ -51,13 +51,6 @@ jobs:
           docker_layer_caching: true
 
       - checkout # check out the code in the project directory
-      - run: |
-          `export PATH=.cirecleci/ci-env:"$PATH" >> "$BASH_ENV"` 
-          echo 'source "$BASH_ENV"'
-      - run: set -a && . ./ci-env && set +a && echo $IMAGE_NAME && docker build -t refael058325/$IMAGE_NAME:$TAG dev/back/ && docker push  refael058325/$IMAGE_NAME:$TAG 
-      - run: echo $IMAGE_NAME
-      - run: echo "hello world" # run the `echo` command
-      - run: ls -a
-      # - run: git checkout test
-      - run: docker build -t $IMAGE_NAME dev/back/
-      - run: docker push  
+      - run: export HI=hi
+      - run: echo $HI
+      # - run: set -a && . ./ci-env && set +a && echo $IMAGE_NAME && docker build -t $IMAGE_NAME:$TAG dev/back/ && docker push  $IMAGE_NAME:$TAG 
