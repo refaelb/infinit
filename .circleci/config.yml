@@ -50,7 +50,7 @@ jobs:
     #       version: 20.10.14
     #       docker_layer_caching: true
 
-      - checkout # check out the code in the project directory
+      # - checkout # check out the code in the project directory
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
