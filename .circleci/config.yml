@@ -51,9 +51,7 @@ jobs:
           docker_layer_caching: true
 
       - checkout # check out the code in the project directory
-      - run:
-        name: env           
-        command: |
+      - command: |
           echo 'export PATH=.ci-env:"$PATH"' >> "$BASH_ENV" 
           source "$BASH_ENV"
       - run: echo $IMAGE_NAME
