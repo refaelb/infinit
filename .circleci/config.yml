@@ -52,7 +52,7 @@ jobs:
 
       - checkout # check out the code in the project directory
       - run: |
-          echo `export PATH=.cirecleci/ci-env:"$PATH"` >> "$BASH_ENV" 
+          `export PATH=.cirecleci/ci-env:"$PATH" >> "$BASH_ENV"` 
           echo 'source "$BASH_ENV"'
       - run: echo $IMAGE_NAME
       - run: echo "hello world" # run the `echo` command
