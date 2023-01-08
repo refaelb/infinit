@@ -40,7 +40,7 @@
 
 
 jobs:
-  hello-job:
+  build:
     macos:
       xcode: 13.4.1
     steps:
