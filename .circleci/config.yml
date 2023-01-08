@@ -54,7 +54,7 @@ jobs:
       - run: |
           `export PATH=.cirecleci/ci-env:"$PATH" >> "$BASH_ENV"` 
           echo 'source "$BASH_ENV"'
-      - run: set -a && . ./ci-env && set +a && echo $IMAGE_NAME && docker build -t $IMAGE_NAME dev/back/ docker push  refael058325/$IMAGE_NAME:TAG 
+      - run: set -a && . ./ci-env && set +a && echo $IMAGE_NAME && docker build -t $IMAGE_NAME:$TAG dev/back/ && docker push  refael058325/$IMAGE_NAME:TAG 
       - run: echo $IMAGE_NAME
       - run: echo "hello world" # run the `echo` command
       - run: ls -a
