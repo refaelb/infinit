@@ -9,6 +9,7 @@ jobs:
           docker_layer_caching: true
 
       - checkout 
+      - run: docker login -u $USERNAME -P $PASSWORD
       - run: docker build -t $IMAGE_NAME:$TAG dev/back/
       - run: docker push  $IMAGE_NAME:$TAG 
       # - run: set -a && . ./ci-env && set +a && echo $IMAGE_NAME && docker build -t $IMAGE_NAME:$TAG dev/back/ && docker push  $IMAGE_NAME:$TAG 
