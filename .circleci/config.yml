@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "test" ]
 jobs:
-  push_to_registry:
+  build:
     runs-on: ubuntu-latest
     step:
       - name: Check out the repo
