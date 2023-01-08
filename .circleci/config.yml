@@ -11,5 +11,6 @@ jobs:
   build:
     machine: true
     steps:
-      - name: Hello world action step
-        id: hello
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
