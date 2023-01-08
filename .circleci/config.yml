@@ -8,11 +8,10 @@ jobs:
     machine: "true"
     steps:
       name: Check out the repo
-      run: actions/checkout@v3
-
+      uses: actions/checkout@v3
      
 
 
 
-      name: echo 
-      run: echo "hi "
+      # name: echo 
+      # run: echo "hi "
