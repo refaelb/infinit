@@ -41,8 +41,10 @@
 
 jobs:
   build:
-    macos:
-      xcode: 13.4.1
+    # macos:
+    #   xcode: 13.4.1
+    machine:
+    image: ubuntu-2204:2022.04.2
     steps:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
