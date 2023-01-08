@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     machine: "true"
-    steps:
+    step:
       name: Check out the repo
       run: actions/checkout@v3
 
