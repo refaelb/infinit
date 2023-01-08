@@ -5,7 +5,7 @@ on:
     branches: [ "test" ]
 jobs:
   build:
-    machine:
+    machine: true
       image: ubuntu-2004:202010-01
     step:
       name: Run a one-line script
