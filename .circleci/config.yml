@@ -5,9 +5,8 @@ on:
     branches: [ "test" ]
 jobs:
   build:
-    macos:
-      xcode: "9.0" # uses Xcode version
-    resource_class: large
+    docker:
+      - image: cimg/base:2022.09
     step:
       - name: Check out the repo
         uses: actions/checkout@v3
