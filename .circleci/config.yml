@@ -5,11 +5,11 @@ on:
     branches: [ "test" ]
 jobs:
   build:
-    # docker:
-    #   - image: cimg/base:2022.09
-    name: Push Docker image to Docker Hub
-    runs-on: ubuntu-latest
-    step:
+    docker:
+      - image: cimg/base:2022.09
+    # name: Push Docker image to Docker Hub
+    # runs-on: ubuntu-latest
+    steps:
       - name: Check out the repo
         uses: actions/checkout@v3
 
