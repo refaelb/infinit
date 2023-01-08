@@ -7,11 +7,12 @@ jobs:
   build:
     machine:
       image: ubuntu-2004:202010-01
-    steps:
-      - name: Run a one-line script
-        run: echo Hello, world!
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+    step:
+      name: Run a one-line script
+      run: echo Hello, world!
+    step:
+      name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
 
