@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     machine: true
-    steps:
+    step:
       name: Run a one-line script
       run: echo Hello, world!
      
