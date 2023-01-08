@@ -5,11 +5,11 @@ on:
     branches: [ "test" ]
 jobs:
   build:
-    machine: true
-    step:
+    runs-on: ubuntu-latest
+    steps:
       name: Run a one-line script
       run: echo Hello, world!
-    step:
+    steps:
       name: Run a multi-line script
       run: |
         echo Add other actions to build,
