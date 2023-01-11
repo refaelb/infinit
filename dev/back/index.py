@@ -24,9 +24,9 @@ def login():
     mydb = client["app"]
     mycol = mydb["users"]
     json_data=json.loads(request.data)
-    return read_from_db(json_data, mycol)
+    return check_users_exists(json_data, mycol)
 
-def read_from_db(json_data, mycol):
+def check_users_exists(json_data: object, mycol: object):
     mydoc = mycol.find().sort("user")
     list=[]
     for x in mydoc:
@@ -43,14 +43,14 @@ def create_user():
     json_data=json.loads(request.data)
     mydb = client["app"]
     mycol = mydb["users"]
-    checker = read_from_db(json_data, mycol)
+    checker = check_users_exists(json_data, mycol)
     if checker == ("login"):
         output = ("user alredy exists")
     else:
-        output = write_to_db(json_data, mycol)
+        output = create_users(json_data, mycol)
     return output
 
-def write_to_db(json_data, mycol):
+def create_users(json_data: object, mycol: object):
     myquery = { "user": json_data["user"] , "pass": json_data["pass"]}
     mydoc = mycol.insert_one(myquery)
     return "sucsess"
