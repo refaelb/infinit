@@ -4,16 +4,12 @@ services:
     container_name: mongodb
     image: mongo
     restart: always
-    # environment:
-    #   MONGO_INITDB_ROOT_USERNAME: root
-    #   MONGO_INITDB_ROOT_PASSWORD: password
-
 
   python_app:
     build:
       context: .
       dockerfile: Dockerfile
     environment:
-      - MONGO_URI=mongo
+      - MONGO_URI=mongodb
     ports:
       - "3000:3000"

@@ -1,11 +1,11 @@
 from flask import Flask, request, render_template, sessions
 import json
 from pymongo import MongoClient
-import os
+import os 
 from dotenv import load_dotenv
 
-load_dotenv('.env') 
-MONGO_URI = os.environ.get('MONGO_URI')
+load_dotenv() 
+MONGO_URI = (os.environ['MONGO_URI'])
 print(MONGO_URI)
 client = MongoClient(MONGO_URI)
 print("Connection Successful to mongo")
