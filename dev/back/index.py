@@ -8,7 +8,7 @@ load_dotenv()
 MONGO_URI = (os.environ['MONGO_URI'])
 print(MONGO_URI)
 client = MongoClient(MONGO_URI)
-print("Connection Successful to mongodb")
+print("Connection Successful to mongo")
 
 mydb = client["app"]
 mycol = mydb["users"]
