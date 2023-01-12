@@ -12,5 +12,5 @@ jobs:
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker build -t $IMAGE_NAME:$TAG dev/back/
       - run: docker images
-      - run: docker push  $DOCKER_USER/$IMAGE_NAME:$TAG 
+      - run: docker push  $IMAGE_NAME:$TAG  $DOCKER_USER/$IMAGE_NAME:$TAG 
       # - run: set -a && . ./ci-env && set +a && echo $IMAGE_NAME && docker build -t $IMAGE_NAME:$TAG dev/back/ && docker push  $IMAGE_NAME:$TAG 
