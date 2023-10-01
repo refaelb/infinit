@@ -1,1 +1,1 @@
-# infinit
+# infini-t
