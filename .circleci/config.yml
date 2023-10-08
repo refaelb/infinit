@@ -1,0 +1,16 @@
+
+jobs:
+  build:
+    docker:
+        - image: cimg/go:1.17
+    steps:
+      - setup_remote_docker:
+          version: 20.10.14
+          docker_layer_caching: true
+
+      - checkout 
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t $DOCKER_USER/$IMAGE_NAME:$TAG dev/back/
+      - run: docker images
+      - run: docker push  $DOCKER_USER/$IMAGE_NAME:$TAG 
+      # - run: set -a && . ./ci-env && set +a && echo $IMAGE_NAME && docker build -t $IMAGE_NAME:$TAG dev/back/ && docker push  $IMAGE_NAME:$TAG 

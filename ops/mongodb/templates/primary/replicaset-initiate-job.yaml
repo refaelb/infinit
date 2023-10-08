@@ -1,0 +1,43 @@
+{{- if and .Values.replicaSet.enabled .Values.replicaSet.job.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ printf "%s-create-replicaset-initiate-job" (include "mongodb.name" .) | trunc 53 | trimSuffix "-" }}
+  labels:
+    app: {{ template "mongodb.name" . }}
+    chart: {{ template "mongodb.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+  annotations:
+    helm.sh/hook-weight: "100"
+    helm.sh/hook: "post-install,post-upgrade"
+    helm.sh/hook-delete-policy: before-hook-creation
+spec:
+  template:
+    metadata:
+      name: "replicaset-initiate-job"
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: {{ printf "%s-create-replicaset-initiate-job" (include "mongodb.name" .) | trunc 53 | trimSuffix "-" }}
+          image: "{{ .Values.replicaSet.job.image.repository }}:{{ default .Chart.AppVersion .Values.replicaSet.job.image.tag }}"
+          imagePullPolicy: {{ .Values.replicaSet.job.image.pullPolicy }}
+          command: ["/scripts/replicaset.sh"]
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          volumeMounts:
+            - name: {{ include "mongodb.name" . }}-script-config
+              mountPath: /scripts
+      volumes:
+        - name: {{ include "mongodb.name" . }}-script-config
+          configMap:
+            name: {{ template "mongodb.fullname" . }}-script-configmap
+            defaultMode: 0555
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml .Values.imagePullSecrets | nindent 8 }}
+      {{- end }}
+{{- end }}
